@@ -1,4 +1,4 @@
-const Hoot = require('../models/hoot.js');
+const Hoot = require('../models/book.js');
 const checkToken = require('../middleware/checkToken.js');
 
 module.exports = {
