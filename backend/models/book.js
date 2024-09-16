@@ -1,8 +1,8 @@
-// models/hoot.js
+// models/book.js
 const mongoose = require('mongoose');
 
 // embedded comment schema:
-const commentSchema = new mongoose.Schema(
+const reviewSchema = new mongoose.Schema(
     {
       text: {
         type: String,
@@ -14,28 +14,28 @@ const commentSchema = new mongoose.Schema(
   );
 
 //HOOT MODULE: 
-const hootSchema = new mongoose.Schema(
+const bookSchema = new mongoose.Schema(
     {
+      category: {
+        type: String,
+        required: true,
+        enum: ['Mystery', 'Fiction', 'Non-Fiction', 'Adventure', 'Thriller', 'Drama', 'Romance', 'Memoir', 'Other'],
+      },
       title: {
         type: String,
         required: true,
       },
-      text: {
+      bookAuthor: {
         type: String,
         required: true,
-      },
-      category: {
-        type: String,
-        required: true,
-        enum: ['News', 'Sports', 'Games', 'Movies', 'Music', 'Television'],
       },
       author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-      comments: [commentSchema],
+      reviews: [reviewSchemaSchema],
     },
     { timestamps: true }
   );
   
-  const Hoot = mongoose.model('Hoot', hootSchema);
+  const Book = mongoose.model('Book', bookSchema);
 
 
-  module.exports = Hoot;
+  module.exports = Book;

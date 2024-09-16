@@ -4,9 +4,8 @@ import { getUser } from '../../services/authService';
 import './App.css';
 import NavBar from '../../components/NavBar/NavBar';
 import HomePage from '../HomePage/HomePage';
-import HootListPage from '../HootListPage/HootListPage'; 
-import HootDetails from '../HootDetailsPage/HootDetailsPage'
-import HootForm from '../../components/HootForm/HootForm';
+//import HootDetails from '../HootDetailsPage/HootDetailsPage'
+//import HootForm from '../../components/HootForm/HootForm';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import * as hootService from '../../services/hootsService'
