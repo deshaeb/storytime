@@ -6,8 +6,8 @@ import * as bookService from '../../services/booksService';
 const BookForm = (props) => {
   const [formData, setFormData] = useState({
     category: 'Other',
+    bookAuthor: '',
     title: '',
-    text: '',
   });
 
   const { bookId } = useParams();
@@ -46,13 +46,13 @@ const BookForm = (props) => {
           value={formData.title}
           onChange={handleChange}
         />
-        <label htmlFor="text-input">Book Author</label>
-        <textarea
+        <label htmlFor="author-input">Book Author</label>
+        <input
           required
           type="text"
           name="bookAuthor"
-          id="text-input"
-          value={formData.text}
+          id="author-input"
+          value={formData.bookAuthor}
           onChange={handleChange}
         />
         <label htmlFor="category-input">Category</label>

@@ -10,6 +10,7 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import * as bookService from '../../services/booksService'
 import ReviewForm from '../../components/ReviewForm/ReviewForm';
+import PostListPage from '../PostListPage/PostListPage'
 
 
 function App() {
@@ -55,8 +56,8 @@ function App() {
       <section id="main-section">
         {user ? (
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/books" element={<BookListPage books={books} />} />
+            <Route path="/" element={<HomePage books={books}/>} />
+            <Route path="/books" element={<PostListPage books={books} />} />
             <Route path="/books/:bookId" element={<BookDetailsPage user={user} handleDeleteBook={handleDeleteBook} />} />
             <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
             <Route path="/books/:bookId/edit" element={<BookForm handleUpdateBook={handleUpdateBook} />} />
