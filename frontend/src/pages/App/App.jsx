@@ -4,49 +4,49 @@ import { getUser } from '../../services/authService';
 import './App.css';
 import NavBar from '../../components/NavBar/NavBar';
 import HomePage from '../HomePage/HomePage';
-//import HootDetails from '../HootDetailsPage/HootDetailsPage'
-//import HootForm from '../../components/HootForm/HootForm';
+import BookDetailsPage from '../BookDetailsPage/BookDetailsPage'
+import BookForm from '../../components/BookForm/BookForm';
 import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
-import * as hootService from '../../services/hootsService'
-import CommentForm from '../../components/NewCommentForm/NewCommentForm';
+import * as bookService from '../../services/booksService'
+import ReviewForm from '../../components/ReviewForm/ReviewForm';
 
 
 function App() {
   const [user, setUser] = useState(getUser());
 
-  const [hoots, setHoots] = useState([]);
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const fetchAllHoots = async () => {
-      const hootsData = await hootService.index();
+    const fetchAllBooks = async () => {
+      const booksData = await bookService.index();
   
       // Set state:
-      setHoots(hootsData);
+      setBooks(booksData);
     };
-    if (user) fetchAllHoots();
+    if (user) fetchAllBooks();
   }, [user]);
 
   const navigate = useNavigate();
 
-  const handleAddHoot = async (hootFormData) => {
-    const newHoot = await hootService.create(hootFormData);
-    setHoots([newHoot, ...hoots]);
-    navigate('/hoots');
+  const handleAddBook = async (bookFormData) => {
+    const newBook = await bookService.create(bookFormData);
+    setBooks([newBook, ...books]);
+    navigate('/books');
   };
 
-  const handleDeleteHoot = async (hootId) => {
-    const deletedHoot = await hootService.deleteHoot(hootId);
-    setHoots(hoots.filter((hoot) => hoot._id !== deletedHoot._id));
-    navigate('/hoots');
+  const handleDeleteBook = async (bookId) => {
+    const deletedBook = await bookService.deleteBook(bookId);
+    setBooks(books.filter((book) => book._id !== deletedBook._id));
+    navigate('/books');
   };
 
-  const handleUpdateHoot = async (hootId, hootFormData) => {
-    const updatedHoot = await hootService.update(hootId, hootFormData);
+  const handleUpdateBook = async (bookId, bookFormData) => {
+    const updatedBook = await bookService.update(bookId, bookFormData);
   
-    setHoots(hoots.map((hoot) => (hootId === hoot._id ? updatedHoot : hoot)));
+    setBooks(books.map((book) => (bookId === book._id ? updatedBook : book)));
   
-    navigate(`/hoots/${hootId}`);
+    navigate(`/books/${bookId}`);
   };
 
   return (
@@ -56,11 +56,11 @@ function App() {
         {user ? (
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/hoots" element={<HootListPage hoots={hoots} />} />
-            <Route path="/hoots/:hootId" element={<HootDetails user={user} handleDeleteHoot={handleDeleteHoot} />} />
-            <Route path="/hoots/new" element={<HootForm handleAddHoot={handleAddHoot} />} />
-            <Route path="/hoots/:hootId/edit" element={<HootForm handleUpdateHoot={handleUpdateHoot} />} />
-            <Route path="/hoots/:hootId/comments/:commentId/edit" element={<CommentForm />} />
+            <Route path="/books" element={<BookListPage books={books} />} />
+            <Route path="/books/:bookId" element={<BookDetailsPage user={user} handleDeleteBook={handleDeleteBook} />} />
+            <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
+            <Route path="/books/:bookId/edit" element={<BookForm handleUpdateBook={handleUpdateBook} />} />
+            <Route path="/books/:bookId/reviews/:reviewId/edit" element={<ReviewForm />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         ) : (

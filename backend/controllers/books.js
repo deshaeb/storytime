@@ -1,4 +1,4 @@
-const Hoot = require('../models/book.js');
+const Book = require('../models/book.js');
 const checkToken = require('../middleware/checkToken.js');
 
 module.exports = {
@@ -6,16 +6,16 @@ module.exports = {
     show, 
     create,
     update,
-    hootsDelete,
+    booksDelete,
 }
 
 // INDEX FUNCTIONALITY 
  async function index(req, res) {
     try {
-      const hoots = await Hoot.find({})
+      const books = await Book.find({})
         .populate('author')
         .sort({ createdAt: 'desc' });
-      res.status(200).json(hoots);
+      res.status(200).json(books);
     } catch (error) {
       res.status(500).json(error);
     }
@@ -24,8 +24,8 @@ module.exports = {
 // SHOW FUNCTIONALITY 
 async function show(req, res) {
     try {
-      const hoot = await Hoot.findById(req.params.hootId).populate('author');
-      res.status(200).json(hoot);
+      const book = await Book.findById(req.params.bookId).populate('author');
+      res.status(200).json(book);
     } catch (error) {
       res.status(500).json(error);
     }
@@ -36,9 +36,9 @@ async function show(req, res) {
     console.log(req.user);
     try {
       req.body.author = req.user._id;
-      const hoot = await Hoot.create(req.body);
-      hoot._doc.author = req.user;
-      res.status(201).json(hoot);
+      const book = await Book.create(req.body);
+      book._doc.author = req.user;
+      res.status(201).json(book);
     } catch (error) {
       console.log(error);
       res.status(500).json(error);
@@ -48,42 +48,42 @@ async function show(req, res) {
 // UPDATE FUNCTIONALITY
 async function update(req, res) {
     try {
-      // Find the hoot:
-      const hoot = await Hoot.findById(req.params.hootId);
+      // Find the book:
+      const book = await Book.findById(req.params.bookId);
   
       // Check permissions:
-      if (!hoot.author.equals(req.user._id)) {
+      if (!book.author.equals(req.user._id)) {
         return res.status(403).send("You're not allowed to do that!");
       }
   
-      // Update hoot:
-      const updatedHoot = await Hoot.findByIdAndUpdate(
-        req.params.hootId,
+      // Update book:
+      const updatedBook = await Book.findByIdAndUpdate(
+        req.params.bookId,
         req.body,
         { new: true }
       );
   
       // Append req.user to the author property:
-      updatedHoot._doc.author = req.user;
+      updatedBook._doc.author = req.user;
   
       // Issue JSON response:
-      res.status(200).json(updatedHoot);
+      res.status(200).json(updatedBook);
     } catch (error) {
       res.status(500).json(error);
     }
   };
 
 // DELETE FUNCTIONALITY
- async function hootsDelete(req, res) {
+ async function booksDelete(req, res) {
     try {
-      const hoot = await Hoot.findById(req.params.hootId);
+      const book = await Book.findById(req.params.bookId);
   
-      if (!hoot.author.equals(req.user._id)) {
+      if (!book.author.equals(req.user._id)) {
         return res.status(403).send("You're not allowed to do that!");
       }
   
-      const deletedHoot = await Hoot.findByIdAndDelete(req.params.hootId);
-      res.status(200).json(deletedHoot);
+      const deletedBook = await Book.findByIdAndDelete(req.params.bookId);
+      res.status(200).json(deletedBook);
     } catch (error) {
       res.status(500).json(error);
     }

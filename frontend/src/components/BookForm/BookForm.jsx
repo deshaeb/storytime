@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import * as hootServie from '../../services/hootsService';
+import * as bookService from '../../services/booksService';
 
 
-const HootForm = (props) => {
+const BookForm = (props) => {
   const [formData, setFormData] = useState({
+    category: 'Other',
     title: '',
     text: '',
-    category: 'News',
   });
 
-  const { hootId } = useParams();
+  const { bookId } = useParams();
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
@@ -18,26 +18,26 @@ const HootForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (hootId) {
-        props.handleUpdateHoot(hootId, formData);
+    if (bookId) {
+        props.handleUpdateBook(bookId, formData);
       } else {
-        props.handleAddHoot(formData);
+        props.handleAddBook(formData);
       }
   };
 
   useEffect(() => {
-    const fetchHoot = async () => {
-      const hootData = await hootService.show(hootId);
-      setFormData(hootData);
+    const fetchBook = async () => {
+      const bookData = await bookService.show(bookId);
+      setFormData(bookData);
     };
-    if (hootId) fetchHoot();
-  }, [hootId]);
+    if (bookId) fetchBook();
+  }, [bookId]);
 
   return (
     <main>
       <form onSubmit={handleSubmit}>
-      <h1>{hootId ? 'Edit Hoot' : 'New Hoot'}</h1>
-        <label htmlFor="title-input">Title</label>
+      <h1>{bookId ? 'Edit Book' : 'New Book'}</h1>
+        <label htmlFor="title-input">Book Title</label>
         <input
           required
           type="text"
@@ -46,11 +46,11 @@ const HootForm = (props) => {
           value={formData.title}
           onChange={handleChange}
         />
-        <label htmlFor="text-input">Text</label>
+        <label htmlFor="text-input">Book Author</label>
         <textarea
           required
           type="text"
-          name="text"
+          name="bookAuthor"
           id="text-input"
           value={formData.text}
           onChange={handleChange}
@@ -63,12 +63,15 @@ const HootForm = (props) => {
           value={formData.category}
           onChange={handleChange}
         >
-          <option value="News">News</option>
-          <option value="Games">Games</option>
-          <option value="Music">Music</option>
-          <option value="Movies">Movies</option>
-          <option value="Sports">Sports</option>
-          <option value="Television">Television</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Non-Fiction">Non-Fiction</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Drama">Drama</option>
+          <option value="Romance">Romance</option>
+          <option value="Memoir">Memoir</option>
+          <option value="Other">Other</option>
         </select>
         <button type="submit">SUBMIT</button>
       </form>
@@ -76,4 +79,4 @@ const HootForm = (props) => {
   );
 };
 
-export default HootForm;
+export default BookForm;

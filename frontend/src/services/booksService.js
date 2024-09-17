@@ -1,16 +1,16 @@
 import sendRequest from './sendRequest';
 
-const BASE_URL = '/api/hoots';
+const BASE_URL = '/api/books';
 
 export function index() {
     return sendRequest(BASE_URL);
   };
 
-export function show(hootId) {
-  return sendRequest(`${BASE_URL}/${hootId}`)
+export function show(bookId) {
+  return sendRequest(`${BASE_URL}/${bookId}`)
 };
 
-export async function create(hootFormData){
+export async function create(bookFormData){
   try {
     const res = await fetch(BASE_URL, {
       method: 'POST',
@@ -18,7 +18,7 @@ export async function create(hootFormData){
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(hootFormData),
+      body: JSON.stringify(bookFormData),
     });
     return res.json();
   } catch (error) {
@@ -26,15 +26,15 @@ export async function create(hootFormData){
   }
 };
 
-export async function createComment(hootId, commentFormData) {
+export async function createReview(bookId, reviewFormData) {
   try {
-    const res = await fetch(`${BASE_URL}/${hootId}/comments`, {
+    const res = await fetch(`${BASE_URL}/${bookId}/reviews`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(commentFormData),
+      body: JSON.stringify(reviewFormData),
     });
     return res.json();
   } catch (error) {
@@ -42,9 +42,9 @@ export async function createComment(hootId, commentFormData) {
   }
 };
 
-export async function deleteHoot(hootId) {
+export async function deleteBook(bookId) {
   try {
-    const res = await fetch(`${BASE_URL}/${hootId}`, {
+    const res = await fetch(`${BASE_URL}/${bookId}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -56,9 +56,9 @@ export async function deleteHoot(hootId) {
   }
 };
 
-export async function deleteComment(hootId, commentId) {
+export async function deleteReview(bookId, reviewId) {
   try {
-    const res = await fetch(`${BASE_URL}/${hootId}/comments/${commentId}`, {
+    const res = await fetch(`${BASE_URL}/${bookId}/reviews/${reviewId}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -71,15 +71,15 @@ export async function deleteComment(hootId, commentId) {
 };
 
 
-export async function update(hootId, hootFormData) {
+export async function update(bookId, bookFormData) {
   try {
-    const res = await fetch(`${BASE_URL}/${hootId}`, {
+    const res = await fetch(`${BASE_URL}/${bookId}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(hootFormData),
+      body: JSON.stringify(bookFormData),
     });
     return res.json();
   } catch (error) {
@@ -87,15 +87,15 @@ export async function update(hootId, hootFormData) {
   }
 }; 
 
-export async function updateComment(hootId, commentId, commentFormData) {
+export async function updateReview(bookId, reviewId, reviewFormData) {
   try {
-    const res = await fetch(`${BASE_URL}/${hootId}/comments/${commentId}`, {
+    const res = await fetch(`${BASE_URL}/${bookId}/reviews/${reviewId}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(commentFormData),
+      body: JSON.stringify(reviewFormData),
     });
     return res.json();
   } catch (error) {

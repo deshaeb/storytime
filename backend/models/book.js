@@ -13,7 +13,7 @@ const reviewSchema = new mongoose.Schema(
     { timestamps: true }
   );
 
-//HOOT MODULE: 
+//BOOK MODULE: 
 const bookSchema = new mongoose.Schema(
     {
       category: {
@@ -30,7 +30,7 @@ const bookSchema = new mongoose.Schema(
         required: true,
       },
       author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-      reviews: [reviewSchemaSchema],
+      reviews: [reviewSchema],
     },
     { timestamps: true }
   );
