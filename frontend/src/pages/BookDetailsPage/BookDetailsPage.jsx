@@ -39,11 +39,11 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
     return (
         <main>
           <header>
-            <p>{book.category.toUpperCase()}</p>
             <h1>{book.title}</h1>
+            <p>{book.category.toUpperCase()}</p>
             {book.imageUrl && <img className="bookImg" src={book.imageUrl} alt="Book Image"/>}
             <p>
-              {book.author.username} posted on
+              {book.author.username} Posted on: &nbsp;
               {new Date(book.createdAt).toLocaleDateString()}
             </p>
             {book.author._id === user._id && (

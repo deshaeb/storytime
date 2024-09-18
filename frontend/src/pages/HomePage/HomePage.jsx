@@ -3,7 +3,7 @@ import  { Link } from 'react-router-dom';
 export default function HomePage({ books }) {
   return (
     <>
-      <h1>StoryTime Review Listings</h1>
+      <h1>StoryTime Reviews</h1>
       <main>
         {books.map((book) => (
           <Link key={book._id} to={`/books/${book._id}`}>
@@ -22,5 +22,5 @@ export default function HomePage({ books }) {
         ))}
       </main>
     </>
-  );
-}
+  )
+};

@@ -10,7 +10,7 @@ import SignUpPage from '../SignUpPage/SignUpPage';
 import LogInPage from '../LogInPage/LogInPage';
 import * as bookService from '../../services/booksService'
 import ReviewForm from '../../components/ReviewForm/ReviewForm';
-import PostListPage from '../PostListPage/PostListPage'
+import BookListingsPage from '../BookListingsPage/BookListingsPage'
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       // Set state:
       setBooks(booksData);
     };
-    if (user) fetchAllBooks();
+    fetchAllBooks();
   }, [user]);
 
   const navigate = useNavigate();
@@ -50,6 +50,8 @@ function App() {
     navigate(`/books/${bookId}`);
   };
 
+  console.log('books', books)
+
   return (
     <main id="react-app">
       <NavBar user={user} setUser={setUser} />
@@ -57,7 +59,7 @@ function App() {
         {user ? (
           <Routes>
             <Route path="/" element={<HomePage books={books}/>} />
-            <Route path="/books" element={<PostListPage books={books} />} />
+            <Route path="/books" element={<BookListingsPage books={books} />} />
             <Route path="/books/:bookId" element={< BookDetailsPage user={user} handleDeleteBook={handleDeleteBook} />} />
             <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
             <Route path="/books/:bookId/edit" element={<BookForm handleUpdateBook={handleUpdateBook} />} />
@@ -66,7 +68,7 @@ function App() {
           </Routes>
         ) : (
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage books={books}/>} />
             <Route path="/login" element={<LogInPage setUser={setUser} />} />
             <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
             <Route path="*" element={<Navigate to="/" />} />

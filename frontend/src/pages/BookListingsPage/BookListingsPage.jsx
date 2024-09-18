@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
 
-export default function PostListPage(props) {
+export default function BookListingsPage({ books }) {
   return (
     <>
-    <h1>Book Review Listings</h1>
+    <h1>My Listings</h1>
       <main>
-    {props.books.map((book) => (
+    {books.map((book) => (
       <Link key={book._id} to={`/books/${book._id}`}>
         <article>
           <header>
             <h2>{book.title}</h2>
+            {book.imageUrl && <img className="bookImg" src={book.imageUrl} alt="Book Image"/>}
             <p>
               {book.author.username} Posted on:    
               {new Date(book.createdAt).toLocaleDateString()}
