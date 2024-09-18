@@ -60,11 +60,11 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
                 <article key={review._id}>
                 <header>
                     <p>
-                    {review.author.username} posted on
+                    {review.author.username} posted on: 
                     {new Date(review.createdAt).toLocaleDateString()}
                     </p>
-                    <Link to={`/books/${bookId}/reviews/${review._id}/edit`}>edit.</Link>
-                    <button onClick={() => handleDeleteReview(review._id)} >delete.</button>
+                    <Link to={`/books/${bookId}/reviews/${review._id}/edit`}>Edit</Link>
+                    <button onClick={() => handleDeleteReview(review._id)} >Delete</button>
                 </header>
                 <p>{review.text}</p>
                 </article>

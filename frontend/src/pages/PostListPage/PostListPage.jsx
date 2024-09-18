@@ -11,7 +11,7 @@ export default function PostListPage(props) {
           <header>
             <h2>{book.title}</h2>
             <p>
-              {book.author.username} posted on 
+              {book.author.username} Posted on:    
               {new Date(book.createdAt).toLocaleDateString()}
             </p>
           </header>

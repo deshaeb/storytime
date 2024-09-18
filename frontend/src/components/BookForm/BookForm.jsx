@@ -37,24 +37,6 @@ const BookForm = (props) => {
     <main>
       <form onSubmit={handleSubmit}>
       <h1>{bookId ? 'Edit Book' : 'New Book'}</h1>
-        <label htmlFor="title-input">Book Title</label>
-        <input
-          required
-          type="text"
-          name="title"
-          id="title-input"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <label htmlFor="author-input">Book Author</label>
-        <input
-          required
-          type="text"
-          name="bookAuthor"
-          id="author-input"
-          value={formData.bookAuthor}
-          onChange={handleChange}
-        />
         <label htmlFor="category-input">Category</label>
         <select
           required
@@ -73,6 +55,24 @@ const BookForm = (props) => {
           <option value="Memoir">Memoir</option>
           <option value="Other">Other</option>
         </select>
+        <label htmlFor="title-input">Book Title</label>
+        <input
+          required
+          type="text"
+          name="title"
+          id="title-input"
+          value={formData.title}
+          onChange={handleChange}
+        />
+        <label htmlFor="author-input">Book Author</label>
+        <input
+          required
+          type="text"
+          name="bookAuthor"
+          id="author-input"
+          value={formData.bookAuthor}
+          onChange={handleChange}
+        />
         <button type="submit">SUBMIT</button>
       </form>
     </main>

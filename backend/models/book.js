@@ -16,6 +16,11 @@ const reviewSchema = new mongoose.Schema(
 //BOOK MODULE: 
 const bookSchema = new mongoose.Schema(
     {
+      image: { 
+        type: String,
+        required: false,
+
+      },
       category: {
         type: String,
         required: true,
