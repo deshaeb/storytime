@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import * as bookService from '../../../src/services/booksService';
 import ReviewForm from '../../components/ReviewForm/ReviewForm';
+import './BookDetailsPage.css'
 
 const BookDetailsPage = ({ user, handleDeleteBook }) => {
     const { bookId } = useParams();
@@ -40,6 +41,7 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
           <header>
             <p>{book.category.toUpperCase()}</p>
             <h1>{book.title}</h1>
+            {book.imageUrl && <img className="bookImg" src={book.imageUrl} alt="Book Image"/>}
             <p>
               {book.author.username} posted on
               {new Date(book.createdAt).toLocaleDateString()}

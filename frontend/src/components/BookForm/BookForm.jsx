@@ -8,6 +8,7 @@ const BookForm = (props) => {
     category: 'Other',
     bookAuthor: '',
     title: '',
+    imageUrl: '',
   });
 
   const { bookId } = useParams();
@@ -37,6 +38,12 @@ const BookForm = (props) => {
     <main>
       <form onSubmit={handleSubmit}>
       <h1>{bookId ? 'Edit Book' : 'New Book'}</h1>
+        <label>Image URL</label>
+        <input type="url" 
+          name="imageUrl"
+          value={formData.imageUrl}
+          onChange={handleChange}
+        /> 
         <label htmlFor="category-input">Category</label>
         <select
           required

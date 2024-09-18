@@ -58,7 +58,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage books={books}/>} />
             <Route path="/books" element={<PostListPage books={books} />} />
-            <Route path="/books/:bookId" element={<BookDetailsPage user={user} handleDeleteBook={handleDeleteBook} />} />
+            <Route path="/books/:bookId" element={< BookDetailsPage user={user} handleDeleteBook={handleDeleteBook} />} />
             <Route path="/books/new" element={<BookForm handleAddBook={handleAddBook} />} />
             <Route path="/books/:bookId/edit" element={<BookForm handleUpdateBook={handleUpdateBook} />} />
             <Route path="/books/:bookId/reviews/:reviewId/edit" element={<ReviewForm />} />
