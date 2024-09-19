@@ -1,10 +1,23 @@
-.NavBar {
+.nav-container, .NavBar{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 2vmin;
+  padding: .25vmin;
 }
 
 .NavBar span {
-  color: rgb(108, 9, 87);
+  color: #1b51a8;
+}
+
+.NavBar {
+  flex-direction: column;
+  height: fit-content;
+  width: 100%;
+}
+
+.nav-container {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  margin-top: 3rem;
+  width: 100%;
 }

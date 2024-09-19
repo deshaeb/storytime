@@ -2,7 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  display: flex;
   color: #1a1a1a;
   background-color: whitesmoke;
 
@@ -26,13 +26,13 @@ h1, h2 {
 }
 
 button {
-  border: 0.5vmin solid #1a1a1a;
+  border: 0.3vmin solid #1a1a1a;
   border-radius: 0.5vmin;
   padding: 0.8vmin;
   font-size: 2vmin;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: rgb(127, 117, 117);
   color: whitesmoke;
   cursor: pointer;
 }
@@ -54,22 +54,22 @@ a {
 }
 
 a:hover {
-  background-color: #1a1a1a;
-  color: whitesmoke;
+  background-color: #7a96c2;
+  color: black;
 }
 
 form {
   display: grid;
   gap: 1.2vmin;
   padding: 4vmin;
-  border: 0.5vmin solid #1a1a1a;
+  border: 0.5vmin solid rgb(127, 117, 117);
   border-radius: 1vmin;
 }
 
 input {
   padding: 0.7vmin;
   font-size: 2vmin;
-  border: 0.3vmin solid #1a1a1a;
+  border: 0.3vmin solid rgb(127, 117, 117);
   border-radius: 0.5vmin;
 }
 
@@ -89,3 +89,24 @@ h2 {
 .error-message {
   color: rgb(166, 29, 29);
 }
+
+.listing-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listing-container > a {
+  margin: 2rem;
+
+}
+
+.listing-container article {
+  text-align: center;
+  padding: 1rem;
+  border: 0.35rem solid #7a96c2;
+  border-radius: 1rem;
+  min-width: 20rem;
+}
+
+/* #7a96c2 */

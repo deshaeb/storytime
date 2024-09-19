@@ -1,3 +1,15 @@
 .bookImg {
-    width: 30vw;
+    width: 12vw;
+}
+
+.book-details {
+    padding: 2rem;
+    text-align: center;
+}
+.book-detail-article {
+    margin: 2rem;
+}
+
+.book-details form {
+    margin: 2rem;
 }

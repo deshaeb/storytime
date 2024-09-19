@@ -1,6 +1,14 @@
+body {
+  background-image: url("/images/bkgColor.jpg") ;
+  
+}
+
 #react-app {
-  display: grid;
-  grid-template-rows: auto auto;
+  display: flex;
+  grid-template-columns: 25vw auto;
+  grid-template-rows: 3.5rem auto;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 #main-section {
@@ -8,4 +16,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#side-img {
+ width: 22%;
+  background-image: url("/images/coverBkgImg.jpg");
+  background-size: cover;
+  background-repeat: repeat-y;
+  
+}
+
+.app-main {
+  width: 100%;
+  
 }

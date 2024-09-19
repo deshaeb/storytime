@@ -2,9 +2,9 @@ import  { Link } from 'react-router-dom';
 
 export default function HomePage({ books }) {
   return (
-    <>
-      <h1>StoryTime Reviews</h1>
-      <main>
+    <section>
+      <h1>Story Time Reviews</h1>
+      <main className="listing-container">
         {books.map((book) => (
           <Link key={book._id} to={`/books/${book._id}`}>
             <article>
@@ -21,6 +21,6 @@ export default function HomePage({ books }) {
           </Link>
         ))}
       </main>
-    </>
+    </section>
   )
 };
