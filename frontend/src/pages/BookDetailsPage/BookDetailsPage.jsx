@@ -69,9 +69,7 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
               </p>
               {review.author._id === user._id && (
                 <>
-                  <Link to={`/books/${bookId}/reviews/${review._id}/edit`}>
-                    Edit
-                  </Link>
+                  
                   <button onClick={() => handleDeleteReview(review._id)}>
                     Delete
                   </button>

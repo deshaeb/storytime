@@ -10,7 +10,7 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav className="NavBar">
-      <img src="/images/logo.jpg" />
+      <img src="/images/logo.jpg" alt="Logo"/>
       <nav className="nav-container">
         <Link to="/">Home</Link>
         &nbsp; | &nbsp;

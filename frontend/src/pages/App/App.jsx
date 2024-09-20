@@ -52,7 +52,6 @@ function App() {
   return (
     <main id="react-app">
       <div id="side-img"></div>
-      {/* <aside id="side-img" /> */}
       <div className="app-main">
         <NavBar user={user} setUser={setUser} />
         <section id="main-section">
