@@ -50,53 +50,56 @@ function App() {
   };
 
   return (
-    
     <main id="react-app">
       <div id="side-img"></div>
       {/* <aside id="side-img" /> */}
       <div className="app-main">
-      <NavBar user={user} setUser={setUser} />
-      <section id="main-section">
-        {user ? (
-          <Routes>
-            <Route path="/" element={<HomePage books={books} />} />
-            <Route path="/books" element={<BookListingsPage books={books} />} />
-            <Route
-              path="/books/:bookId"
-              element={
-                <BookDetailsPage
-                  user={user}
-                  handleDeleteBook={handleDeleteBook}
-                />
-              }
-            />
-            <Route
-              path="/books/new"
-              element={<BookForm handleAddBook={handleAddBook} />}
-            />
-            <Route
-              path="/books/:bookId/edit"
-              element={<BookForm handleUpdateBook={handleUpdateBook} />}
-            />
-            <Route
-              path="/books/:bookId/reviews/:reviewId/edit"
-              element={<ReviewForm />}
-            />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        ) : (
-          <Routes>
-            <Route path="/" element={<HomePage books={books} />} />
-            <Route path="/login" element={<LogInPage setUser={setUser} />} />
-            <Route path="/signup" element={<SignUpPage setUser={setUser} />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        )}
-      </section>
+        <NavBar user={user} setUser={setUser} />
+        <section id="main-section">
+          {user ? (
+            <Routes>
+              <Route path="/" element={<HomePage books={books} />} />
+              <Route
+                path="/books"
+                element={<BookListingsPage books={books} />}
+              />
+              <Route
+                path="/books/:bookId"
+                element={
+                  <BookDetailsPage
+                    user={user}
+                    handleDeleteBook={handleDeleteBook}
+                  />
+                }
+              />
+              <Route
+                path="/books/new"
+                element={<BookForm handleAddBook={handleAddBook} />}
+              />
+              <Route
+                path="/books/:bookId/edit"
+                element={<BookForm handleUpdateBook={handleUpdateBook} />}
+              />
+              <Route
+                path="/books/:bookId/reviews/:reviewId/edit"
+                element={<ReviewForm />}
+              />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path="/" element={<HomePage books={books} />} />
+              <Route path="/login" element={<LogInPage setUser={setUser} />} />
+              <Route
+                path="/signup"
+                element={<SignUpPage setUser={setUser} />}
+              />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          )}
+        </section>
       </div>
     </main>
-    
-    
   );
 }
 

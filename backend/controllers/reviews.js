@@ -27,12 +27,11 @@ async function create(req, res) {
   }
 }
 
-
 // UPDATE FUNCTIONALITY
 async function update(req, res) {
   try {
     const book = await Book.findById(req.params.bookId);
-    
+
     if (!book.author.equals(req.user._id)) {
       return res.status(403).send("You're not allowed to do that!");
     }

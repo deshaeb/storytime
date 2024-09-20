@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import * as bookService from '../../services/booksService';
-
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import * as bookService from "../../services/booksService";
 
 const BookForm = (props) => {
   const [formData, setFormData] = useState({
-    category: 'Other',
-    bookAuthor: '',
-    title: '',
-    imageUrl: '',
+    category: "Other",
+    bookAuthor: "",
+    title: "",
+    imageUrl: "",
   });
 
   const { bookId } = useParams();
@@ -20,10 +19,10 @@ const BookForm = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (bookId) {
-        props.handleUpdateBook(bookId, formData);
-      } else {
-        props.handleAddBook(formData);
-      }
+      props.handleUpdateBook(bookId, formData);
+    } else {
+      props.handleAddBook(formData);
+    }
   };
 
   useEffect(() => {
@@ -37,13 +36,14 @@ const BookForm = (props) => {
   return (
     <main>
       <form onSubmit={handleSubmit}>
-      <h1>{bookId ? 'Edit Book' : 'New Book'}</h1>
+        <h1>{bookId ? "Edit Book" : "New Book"}</h1>
         <label>Image URL</label>
-        <input type="url" 
+        <input
+          type="url"
           name="imageUrl"
           value={formData.imageUrl}
           onChange={handleChange}
-        /> 
+        />
         <label htmlFor="category-input">Category</label>
         <select
           required

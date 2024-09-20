@@ -20,8 +20,6 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
     fetchBook();
   }, [bookId]);
 
-  // Verify that book state is being set correctly:
-  console.log("book state:", book);
 
   const handleAddReview = async (reviewFormData) => {
     const newReview = await bookService.createReview(bookId, reviewFormData);
@@ -40,7 +38,6 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
   if (!book) return <main>Loading...</main>;
   return (
     <main className="listing-container book-details">
-      <div></div>
       <header>
         <h1>{book.title}</h1>
         <p>{book.category.toUpperCase()}</p>
@@ -67,19 +64,23 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
             <p>{review.text}</p>
             <header>
               <p>
-                {book.author.name} posted: &nbsp;
+                {review.author.name} posted: &nbsp;
                 {new Date(review.createdAt).toLocaleDateString()}
               </p>
-              <Link to={`/books/${bookId}/reviews/${review._id}/edit`}>
-                Edit
-              </Link>
-              <button onClick={() => handleDeleteReview(review._id)}>
-                Delete
-              </button>
+              {review.author._id === user._id && (
+                <>
+                  <Link to={`/books/${bookId}/reviews/${review._id}/edit`}>
+                    Edit
+                  </Link>
+                  <button onClick={() => handleDeleteReview(review._id)}>
+                    Delete
+                  </button>
+                </>
+              )}
             </header>
           </article>
         ))}
-        
+
         <ReviewForm handleAddReview={handleAddReview} />
       </section>
     </main>

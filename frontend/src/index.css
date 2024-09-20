@@ -21,7 +21,8 @@ body {
   min-height: 100vh;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
 }
 
@@ -62,7 +63,7 @@ form {
   display: grid;
   gap: 1.2vmin;
   padding: 4vmin;
-  border: 0.20rem solid black;
+  border: 0.2rem solid black;
   border-radius: 1vmin;
 }
 
@@ -98,15 +99,13 @@ h2 {
 
 .listing-container > a {
   margin: 2rem;
-
 }
 
 .listing-container article {
   text-align: center;
   padding: 1rem;
-  border: 0.20rem solid black;
+  border: 0.2rem solid black;
   border-radius: 1rem;
   min-width: 20rem;
 }
 
-/* #7a96c2 */

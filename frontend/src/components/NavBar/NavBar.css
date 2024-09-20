@@ -1,8 +1,9 @@
-.nav-container, .NavBar{
+.nav-container,
+.NavBar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: .25vmin;
+  padding: 0.25vmin;
 }
 
 .NavBar span {

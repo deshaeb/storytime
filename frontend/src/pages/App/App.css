@@ -1,6 +1,5 @@
 body {
-  background-image: url("/images/bkgColor.jpg") ;
-  
+  background-image: url("/images/bkgColor.jpg");
 }
 
 #react-app {
@@ -19,11 +18,10 @@ body {
 }
 
 #side-img {
- width: 22%;
+  width: 22%;
   background-image: url("/images/coverBkgImg.jpg");
   background-size: cover;
   background-repeat: repeat-y;
-  
 }
 
 .app-main {

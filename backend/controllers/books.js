@@ -24,7 +24,7 @@ async function index(req, res) {
 // SHOW FUNCTIONALITY
 async function show(req, res) {
   try {
-    const book = await Book.findById(req.params.bookId).populate("author");
+    const book = await Book.findById(req.params.bookId).populate("author").populate('reviews.author');
     res.status(200).json(book);
   } catch (error) {
     res.status(500).json(error);
