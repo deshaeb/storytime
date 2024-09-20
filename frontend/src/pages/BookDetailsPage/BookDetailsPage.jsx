@@ -48,7 +48,7 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
           <img className="bookImg" src={book.imageUrl} alt="Book Image" />
         )}
         <p>
-          {book.author.username} Posted on: &nbsp;
+          {book.author.name} &nbsp;Posted: &nbsp;
           {new Date(book.createdAt).toLocaleDateString()}
         </p>
         {book.author._id === user._id && (
@@ -67,7 +67,7 @@ const BookDetailsPage = ({ user, handleDeleteBook }) => {
             <p>{review.text}</p>
             <header>
               <p>
-                {review.author.username} Posted on: &nbsp;
+                {book.author.name} posted: &nbsp;
                 {new Date(review.createdAt).toLocaleDateString()}
               </p>
               <Link to={`/books/${bookId}/reviews/${review._id}/edit`}>

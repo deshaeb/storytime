@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const User = require('../models/user');
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const User = require("../models/user");
 
 module.exports = {
   signup,
@@ -13,7 +13,7 @@ async function signup(req, res) {
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
-    res.status(400).json({ message: 'Duplicate email' });
+    res.status(400).json({ message: "Duplicate email" });
   }
 }
 
@@ -26,7 +26,7 @@ async function login(req, res) {
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
-    res.status(400).json({ message: 'Bad Credentials' });
+    res.status(400).json({ message: "Bad Credentials" });
   }
 }
 
@@ -37,6 +37,6 @@ function createJWT(user) {
     // data payload
     { user },
     process.env.SECRET,
-    { expiresIn: '24h' }
+    { expiresIn: "24h" }
   );
 }
